@@ -7,15 +7,28 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 @Service
 public class EntityInsertion {
     @Autowired
     private DataMapper dataMapper;
+    private final Lock lock = new ReentrantLock(false);
 
 
     public Integer addEntityByLock() {
         synchronized (this) {
             return addEntity();
+        }
+    }
+
+    public Integer addEntityByLock2() {
+        lock.lock();
+        try {
+            return addEntity();
+        } finally {
+            lock.unlock();
         }
     }
 

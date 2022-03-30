@@ -11,9 +11,9 @@ public class ConcurrentWriteDbApplication {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(ConcurrentWriteDbApplication.class, args);
         ConcurrentInsertTasks concurrentInsertTasks = context.getBean(ConcurrentInsertTasks.class);
-//        concurrentInsertTasks.executeConcurrentAddByLock();
+        concurrentInsertTasks.executeConcurrentAddByLock();
 //        concurrentInsertTasks.executeConcurrentAddByTransaction();
-        concurrentInsertTasks.executeConcurrentAddByTransactionWithLock();
+//        concurrentInsertTasks.executeConcurrentAddByTransactionWithLock();
     }
 
 }

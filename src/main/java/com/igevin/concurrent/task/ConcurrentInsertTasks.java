@@ -16,7 +16,7 @@ public class ConcurrentInsertTasks {
     public void executeConcurrentAddByLock() {
         int loop = 5;
         for (int i = 0; i < loop; i++) {
-            executorService.submit(entityInsertion::addEntityByLock);
+            executorService.submit(entityInsertion::addEntityByLock2);
         }
     }
 
