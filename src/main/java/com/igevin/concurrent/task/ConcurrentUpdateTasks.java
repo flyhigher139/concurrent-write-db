@@ -40,5 +40,16 @@ public class ConcurrentUpdateTasks {
         helper.executeConcurrentTask(() -> entityUpdate.increaseVisitCountOptimisticallyWithRetry(id));
     }
 
+    public void getPerformances(int concurrent) {
+//        helper.getPerformance(concurrent, "executeConcurrentAddAtomically",
+//                () -> entityUpdate.increaseVisitCountAtomically(id));
+//        helper.getPerformance(concurrent, "executeConcurrentAddByLock",
+//                () -> entityUpdate.increaseVisitCountByLock(id));
+//        helper.getPerformance(concurrent, "executeConcurrentAddByTransaction",
+//                () -> entityUpdate.increaseVisitCountByTransaction(id));
+        helper.getPerformance(concurrent, "executeConcurrentAddOptimisticallyWithRetry",
+                () -> entityUpdate.increaseVisitCountOptimisticallyWithRetry(id));
+    }
+
 
 }

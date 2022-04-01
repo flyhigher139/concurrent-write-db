@@ -16,8 +16,6 @@ public class ConcurrentInsertTasks {
     @Autowired
     private Helper helper;
 
-    private final ExecutorService executorService = Executors.newFixedThreadPool(10);
-
     public void executeConcurrentAddByLock() {
         helper.executeConcurrentTask(entityInsertion::addEntityByLock2);
     }
@@ -30,5 +28,10 @@ public class ConcurrentInsertTasks {
         helper.executeConcurrentTask(entityInsertion::addEntityByTransactionWithLock);
     }
 
+    public void getPerformances(int concurrent) {
+        helper.getPerformance(concurrent, "executeConcurrentAddByLock1", entityInsertion::addEntityByLock);
+        helper.getPerformance(concurrent, "executeConcurrentAddByLock2", entityInsertion::addEntityByLock2);
+        helper.getPerformance(concurrent, "executeConcurrentAddByTransactionWithLock", entityInsertion::addEntityByTransactionWithLock);
+    }
 
 }

@@ -24,12 +24,23 @@ public class ConcurrentWriteDbApplication {
 //        concurrentUpdateTasks.executeConcurrentAddByLock();;
 //        concurrentUpdateTasks.executeConcurrentAddByTransaction();;
 //        concurrentUpdateTasks.executeConcurrentAddOptimistically();;
-        concurrentUpdateTasks.executeConcurrentAddOptimisticallyWithRetry();;
+//        concurrentUpdateTasks.executeConcurrentAddOptimisticallyWithRetry();
+        int concurrent = 1000;
+//        getInsertPerformance(concurrent, concurrentInsertTasks);
+        getUpdatePerformance(concurrent, concurrentUpdateTasks);
+    }
+
+    private static void getInsertPerformance(int concurrent, ConcurrentInsertTasks bean) {
+        bean.getPerformances(concurrent);
+    }
+
+    private static void getUpdatePerformance(int concurrent, ConcurrentUpdateTasks bean) {
+        bean.getPerformances(concurrent);
     }
 
     @Bean
     public ExecutorService getDefaultFixedThreadPool() {
-        return Executors.newFixedThreadPool(10);
+        return Executors.newFixedThreadPool(2 * Runtime.getRuntime().availableProcessors() + 1);
     }
 
 }
