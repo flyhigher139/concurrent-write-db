@@ -1,4 +1,4 @@
-package com.igevin.concurrent.writedb;
+package com.igevin.concurrent;
 
 import com.igevin.concurrent.writedb.dao.ConcurrentEntity;
 import com.igevin.concurrent.writedb.dao.DataMapper;
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ConcurrentWriteDbApplicationTests {
+public class ConcurrentWriteDbApplicationTest {
     @Autowired
     private DataMapper dataMapper;
 
@@ -22,5 +22,4 @@ class ConcurrentWriteDbApplicationTests {
         Integer result = dataMapper.insertConcurrentEntity(entity);
         Assertions.assertEquals(result, 1);
     }
-
 }
